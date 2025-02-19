@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --neon-primary: #0ff;
+            --neon-secondary: #f0f;
+            --bg-dark: #0a0a0a;
+            --bg-darker: #050505;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+            font-size: 18px;
+        }
+
+        .navbar {
+            padding: 1.5rem 0;
+            font-size: 1.2rem;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+        }
+
+        section {
+            min-height: 100vh;
+            padding: 120px 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .section-container {
+            background-color: var(--bg-darker);
+            border-radius: 20px;
+            padding: 3rem;
+            width: 100%;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .neon-border {
+            position: relative;
+        }
+
+        .neon-border::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 2px solid var(--neon-primary);
+            border-radius: 20px;
+            animation: neonGlow 2s infinite alternate;
+            pointer-events: none;
+        }
+
+        .hero {
+            background: linear-gradient(45deg, var(--bg-darker), var(--bg-dark));
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 6rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px var(--neon-primary);
+        }
+
+        .hero p {
+            font-size: 2.5rem;
+            color: #888;
+        }
+
+        .section-container h2 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .skill-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.2);
+        }
+
+        .skill-box h4 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .skill-box p {
+            font-size: 1.2rem;
+        }
+
+        .projects-wrapper {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .projects-container {
+            display: flex;
+            transition: transform 0.5s ease;
+            gap: 30px;
+            padding: 30px 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            width: 100%;
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            min-width: 400px;
+            flex: 0 0 400px;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(255, 0, 255, 0.2);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .project-card h4 {
+            font-size: 1.8rem;
+            margin: 1rem 0;
+        }
+
+        .project-card p {
+            font-size: 1.2rem;
+        }
+
+        .scroll-arrow {
+            width: 70px;
+            height: 70px;
+            background: rgba(0, 255, 255, 0.1);
+            border: none;
+            border-radius: 50%;
+            color: var(--neon-primary);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+            font-size: 2rem;
+            flex-shrink: 0;
+        }
+
+        .scroll-arrow:hover {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: 0 0 15px var(--neon-primary);
+            transform: scale(1.1);
+        }
+
+        .nav-link {
+            color: #fff !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--neon-primary) !important;
+            text-shadow: 0 0 10px var(--neon-primary);
+        }
+
+        @keyframes neonGlow {
+            from {
+                box-shadow: 0 0 10px var(--neon-primary),
+                           inset 0 0 10px var(--neon-primary);
+            }
+            to {
+                box-shadow: 0 0 20px var(--neon-primary),
+                           inset 0 0 20px var(--neon-primary);
+            }
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1.2rem;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--neon-primary);
+            box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+            color: #fff;
+        }
+
+        .contact-form button {
+            font-size: 1.3rem;
+            padding: 1rem 2rem;
+        }
+
+        footer {
+            font-size: 1.2rem;
+            padding: 2rem 0;
+        }
+
+        /* Additional mobile responsiveness */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .hero p {
+                font-size: 1.8rem;
+            }
+
+            .section-container h2 {
+                font-size: 2.5rem;
+            }
+
+            .skill-box h4 {
+                font-size: 1.5rem;
+            }
+
+            .project-card {
+                min-width: 300px;
+                flex: 0 0 300px;
+            }
+        }
+
+        /* Update these styles in your existing CSS */
+
+section {
+    min-height: 120vh; /* Increased from 100vh */
+    padding: 160px 0;  /* Increased from 120px */
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.section-container {
+    background-color: var(--bg-darker);
+    border-radius: 20px;
+    padding: 5rem;    /* Increased from 3rem */
+    width: 100%;
+    box-shadow: 0 0 30px rgba(0, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* Adjust hero section text sizes for larger spaces */
+.hero h1 {
+    font-size: 7rem;    /* Increased from 6rem */
+    margin-bottom: 3rem; /* Increased from 2rem */
+    text-shadow: 0 0 20px var(--neon-primary);
+}
+
+.hero p {
+    font-size: 3rem;    /* Increased from 2.5rem */
+    color: #888;
+}
+
+/* Adjust other section content spacing */
+.section-container h2 {
+    font-size: 4rem;    /* Increased from 3.5rem */
+    margin-bottom: 3rem; /* Increased from 2rem */
+}
+
+/* Adjust skill boxes for larger sections */
+.skill-box {
+    padding: 3rem;      /* Increased from 2rem */
+    margin-bottom: 3rem; /* Increased from 2rem */
+}
+
+/* Project cards adjustments */
+.project-card {
+    min-width: 450px;   /* Increased from 400px */
+    flex: 0 0 450px;    /* Increased from 400px */
+}
+
+.project-card img {
+    height: 350px;      /* Increased from 300px */
+}
+
+/* Update mobile responsiveness for larger sections */
+@media (max-width: 768px) {
+    section {
+        min-height: 100vh;
+        padding: 120px 0;
+    }
+
+    .section-container {
+        padding: 3rem;
+    }
+
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+    
+    .hero p {
+        font-size: 2rem;
+    }
+
+    .section-container h2 {
+        font-size: 3rem;
+    }
+
+    .skill-box {
+        padding: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .project-card {
+        min-width: 320px;
+        flex: 0 0 320px;
+    }
+}
+    </style>
+</head>
+<body>
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgba(10, 10, 10, 0.95);">
+            <div class="container">
+                <a class="navbar-brand" href="#" style="color: var(--neon-primary);">MyPortfolio</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#home">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">Skills</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#projects">Projects</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="container">
+                <h1 data-aos="fade-up">Ashwin Karthik M</h1>
+                <p data-aos="fade-up" data-aos-delay="200"></p>
+            </div>
+        </section>
+    
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                <div class="section-container neon-border" data-aos="fade-up">
+                    <h2 class="text-center mb-4">About Me</h2>
+                    <div class="row">
+                        <div class="col-md-6" data-aos="fade-right">
+                            <img src="profile.png" alt="Profile" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6" data-aos="fade-left">
+                            <p>I'm passionate about cybersecurity, networking, and web development, with hands-on experience in Linux systems across multiple platforms. I've tackled various CTF challenges, sharpening my problem-solving skills, and have built efficient web applications, showcasing my web development expertise. I am always eager to expand my knowledge and stay up-to-date with the latest trends in technology.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Skills Section -->
+        <section id="skills">
+            <div class="container">
+                <div class="section-container neon-border" data-aos="fade-up">
+                    <h2 class="text-center mb-4">Skills</h2>
+                    <div class="row g-4">
+                        <div class="col-md-3" data-aos="zoom-in">
+                            <div class="skill-box">
+                                <h4>Frontend</h4>
+                                <p>HTML, CSS, JavaScript, React</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                            <div class="skill-box">
+                                <h4>Backend</h4>
+                                <p>Node.js, Python, Java</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                            <div class="skill-box">
+                                <h4>Database</h4>
+                                <p>MongoDB, MySQL, PostgreSQL</p>
+                            </div>
+                        </div>
+                        <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="skill-box">
+                                <h4>Tools</h4>
+                                <p>Git, Docker, AWS</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Projects Section -->
+        <section id="projects">
+            <div class="container">
+                <div class="section-container neon-border" data-aos="fade-up">
+                    <h2 class="text-center mb-4">Projects</h2>
+                    <div class="projects-wrapper">
+                        <button class="scroll-arrow scroll-left">←</button>
+                        <div class="projects-container">
+                            <div class="project-card">
+                                <img src="/api/placeholder/400/300" alt="Project 1">
+                                <div class="p-3">
+                                    <h4>E-commerce Platform</h4>
+                                    <p>A full-stack e-commerce solution built with MERN stack.</p>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                <img src="/api/placeholder/400/300" alt="Project 2">
+                                <div class="p-3">
+                                    <h4>Task Management App</h4>
+                                    <p>A React-based task management application with real-time updates.</p>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                <img src="/api/placeholder/400/300" alt="Project 3">
+                                <div class="p-3">
+                                    <h4>Weather Dashboard</h4>
+                                    <p>A weather application using OpenWeather API and Vue.js.</p>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                <img src="/api/placeholder/400/300" alt="Project 4">
+                                <div class="p-3">
+                                    <h4>Social Media Dashboard</h4>
+                                    <p>A social media analytics dashboard with real-time data visualization.</p>
+                                </div>
+                            </div>
+                            <div class="project-card">
+                                <img src="/api/placeholder/400/300" alt="Project 5">
+                                <div class="p-3">
+                                    <h4>Portfolio Generator</h4>
+                                    <p>A React application that generates beautiful portfolios from user data.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="scroll-arrow scroll-right">→</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="section-container neon-border" data-aos="fade-up">
+                    <h2 class="text-center mb-4">Contact Me</h2>
+                    <div class="row">
+                        <div class="col-md-6 mx-auto">
+                            <form class="contact-form">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name">
+                                </div>
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email">
+                                </div>
+                                <div class="mb-3">
+                                    <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-outline-info w-100">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Footer -->
+        <footer class="py-4 text-center">
+            <p></p>
+        </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS with updated settings
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100,
+            disable: 'mobile' // Disable on mobile devices for better performance
+        });
+
+        // Project carousel functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectsContainer = document.querySelector('.projects-container');
+            const scrollLeftBtn = document.querySelector('.scroll-left');
+            const scrollRightBtn = document.querySelector('.scroll-right');
+            const scrollAmount = window.innerWidth <= 768 ? 330 : 430; // Responsive scroll amount
+
+            // Handle scroll buttons
+            scrollLeftBtn.addEventListener('click', () => {
+                projectsContainer.scrollBy({
+                    left: -scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            scrollRightBtn.addEventListener('click', () => {
+                projectsContainer.scrollBy({
+                    left: scrollAmount,
+                    behavior: 'smooth'
+                });
+            });
+
+            // Update scroll button visibility
+            function updateScrollButtons() {
+                const isAtStart = projectsContainer.scrollLeft === 0;
+                const isAtEnd = projectsContainer.scrollLeft + projectsContainer.clientWidth >= projectsContainer.scrollWidth;
+
+                scrollLeftBtn.style.opacity = isAtStart ? '0.5' : '1';
+                scrollRightBtn.style.opacity = isAtEnd ? '0.5' : '1';
+                scrollLeftBtn.style.pointerEvents = isAtStart ? 'none' : 'auto';
+                scrollRightBtn.style.pointerEvents = isAtEnd ? 'none' : 'auto';
+            }
+
+            projectsContainer.addEventListener('scroll', updateScrollButtons);
+            window.addEventListener('resize', updateScrollButtons);
+            updateScrollButtons();
+
+            // Touch scroll for mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            projectsContainer.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            projectsContainer.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const difference = touchStartX - touchEndX;
+
+                if (Math.abs(difference) > swipeThreshold) {
+                    if (difference > 0) {
+                        // Swipe left
+                        scrollRightBtn.click();
+                    } else {
+                        // Swipe right
+                        scrollLeftBtn.click();
+                    }
+                }
+            }
+        });
+
+        // Form submission handling with improved validation
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = contactForm.querySelector('input[type="text"]').value.trim();
+            const email = contactForm.querySelector('input[type="email"]').value.trim();
+            const message = contactForm.querySelector('textarea').value.trim();
+            
+            // Enhanced validation
+            if (!name || !email || !message) {
+                alert('Please fill in all fields');
+                return;
+            }
+
+            // Basic email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address');
+                return;
+            }
+            
+            const submitButton = contactForm.querySelector('button');
+            const originalText = submitButton.textContent;
+            
+            submitButton.innerHTML = '<span class="spinner-border spinner-border-sm me-2"></span>Sending...';
+            submitButton.disabled = true;
+            
+            // Simulate form submission (replace with actual API call)
+            setTimeout(() => {
+                submitButton.textContent = 'Message Sent!';
+                submitButton.classList.remove('btn-outline-info');
+                submitButton.classList.add('btn-success');
+                
+                setTimeout(() => {
+                    contactForm.reset();
+                    submitButton.textContent = originalText;
+                    submitButton.disabled = false;
+                    submitButton.classList.add('btn-outline-info');
+                    submitButton.classList.remove('btn-success');
+                }, 2000);
+            }, 1500);
+        });
+
+        // Smooth scroll for navigation with offset
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                const navbar = document.querySelector('.navbar');
+                const offset = navbar.offsetHeight;
+
+                if (target) {
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Enhanced navbar background effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            const scrolled = window.scrollY > 50;
+            
+            navbar.style.background = scrolled ? 
+                'rgba(10, 10, 10, 0.98)' : 
+                'rgba(10, 10, 10, 0.95)';
+            
+            navbar.style.boxShadow = scrolled ?
+                '0 0 20px rgba(0, 255, 255, 0.1)' :
+                'none';
+        });
+    </script>
+</body>
+</html>
