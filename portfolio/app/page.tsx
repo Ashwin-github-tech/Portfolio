@@ -31,78 +31,57 @@ export default function Home() {
 
   if (!mounted) return null
 
-  return (
+    return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800">
-      {/* Hero Section */}
       <section className="relative overflow-hidden">
-        {/* Background Elements */}
         <div className="absolute inset-0 z-0">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/10 rounded-full blur-3xl"></div>
-          <div className="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 right-10 w-80 h-80 bg-cyan-500/20 rounded-full blur-3xl"></div>
         </div>
 
         <div className="container relative z-10 mx-auto px-4 py-20 md:py-32">
           <div className="grid md:grid-cols-[1fr_1fr] gap-8 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-              className="order-2 md:order-1"
-            >
-              <Badge className="mb-4 bg-purple-600/20 text-purple-400 hover:bg-purple-600/30 border-none px-3 py-1">
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="order-2 md:order-1">
+              <Badge className="mb-4 bg-purple-600/20 text-purple-400 border-none px-3 py-1">
                 Cybersecurity & Full Stack Development
               </Badge>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-white">
-                Hi, I'm{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">
-                  Ashwin Karthik
-                </span>
+                Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-400">Ashwin Karthik</span>
               </h1>
               <p className="text-lg text-gray-300 mb-6 max-w-lg">
-                A passionate cybersecurity enthusiast and full stack developer with expertise in CTF challenges,
-                networking, and building efficient web applications.
+                A passionate cybersecurity enthusiast and full stack developer with expertise in CTF challenges, networking, and building efficient web applications.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Button className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white border-none">
-                  View Projects
-                </Button>
-                <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800">
-                  Contact Me
-                </Button>
+                <Link href="/projects">
+                  <Button className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white border-none">
+                    View Projects
+                  </Button>
+                </Link>
+                <Link href="/contact">
+                  <Button variant="outline" className="border-gray-700 text-gray-300 hover:bg-gray-800">
+                    Contact Me
+                  </Button>
+                </Link>
               </div>
-
               <div className="flex items-center gap-4 mt-8">
-                <Link href="https://github.com/" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="https://github.com/ashwinkarthik" className="text-gray-400 hover:text-white transition-colors">
                   <Github size={24} />
                 </Link>
-                <Link href="https://linkedin.com/" className="text-gray-400 hover:text-white transition-colors">
+                <Link href="https://linkedin.com/in/ashwinkarthik" className="text-gray-400 hover:text-white transition-colors">
                   <Linkedin size={24} />
                 </Link>
-                <Link
-                  href="mailto:ashwinkarthikm.official@gmail.com"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
+                <Link href="mailto:ashwinkarthikm.official@gmail.com" className="text-gray-400 hover:text-white transition-colors">
                   <Mail size={24} />
                 </Link>
               </div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="order-1 md:order-2 flex justify-center"
-            >
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5, delay: 0.2 }} className="order-1 md:order-2 flex justify-center">
               <div className="relative w-64 h-64 md:w-80 md:h-80">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-r from-purple-600 to-cyan-600 blur-md"></div>
                 <div className="absolute inset-1 rounded-full bg-gray-900"></div>
                 <div className="absolute inset-4 rounded-full overflow-hidden border-4 border-gray-800">
-                  <Image
-                    src="/placeholder.svg?height=400&width=400"
-                    alt="Ashwin Karthik"
-                    fill
-                    className="object-cover"
-                  />
+                  <Image src="/your-image.jpg" alt="Ashwin Karthik" fill className="object-cover" />
                 </div>
               </div>
             </motion.div>
@@ -113,125 +92,19 @@ export default function Home() {
       {/* About Section */}
       <section className="py-20 bg-gray-900/50">
         <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mb-12 text-center"
-          >
-            <Badge className="mb-2 bg-purple-600/20 text-purple-400 hover:bg-purple-600/30 border-none px-3 py-1">
-              About Me
-            </Badge>
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.5 }} className="mb-12 text-center">
+            <Badge className="mb-2 bg-purple-600/20 text-purple-400 border-none px-3 py-1">About Me</Badge>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Personal Info</h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Get to know more about my background, skills, and interests
-            </p>
+            <p className="text-gray-400 max-w-2xl mx-auto">Get to know more about my background, skills, and interests</p>
           </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="bg-gray-800/50 p-6 rounded-xl border border-gray-700"
-            >
-              <h3 className="text-xl font-semibold mb-4 text-white">Profile</h3>
-              <p className="text-gray-300 mb-6">
-                Passionate about cybersecurity, networking, and web development. Proficient in Linux systems with
-                hands-on experience across multiple platforms. Experienced in solving CTF challenges. Skilled in web
-                development with experience in building efficient web applications. Continuously seeking opportunities
-                to expand my knowledge.
-              </p>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="flex items-start gap-3">
-                  <Mail className="text-purple-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-sm text-gray-400">Email</p>
-                    <p className="text-gray-300 break-all">ashwinkarthikm.official@gmail.com</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Phone className="text-purple-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-sm text-gray-400">Phone</p>
-                    <p className="text-gray-300">+91 9344155337</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Calendar className="text-purple-400 mt-1" size={18} />
-                  <div>
-                    <p className="text-sm text-gray-400">Date of Birth</p>
-                    <p className="text-gray-300">25 March 2004</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="mt-6">
-                <a href="./new_resume.pdf" download className=className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 flex items-center justify-center gap-2">
-                  <Download size={16} /> Download Resume
-                </a>
-{/*                 <Button className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 flex items-center justify-center gap-2">
-                  <Download size={16} /> Download Resume
-                </Button> */}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-300">
-                  <CardContent className="p-6 flex flex-col items-center text-center">
-                    <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mb-4">
-                      <Shield className="text-purple-400" size={24} />
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Cyber Security</h3>
-                    <p className="text-gray-400 text-sm">Experienced in CTF challenges and security fundamentals</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-cyan-500/50 transition-all duration-300">
-                  <CardContent className="p-6 flex flex-col items-center text-center">
-                    <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center mb-4">
-                      <Code className="text-cyan-400" size={24} />
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Full Stack Dev</h3>
-                    <p className="text-gray-400 text-sm">
-                      Building efficient web applications with modern technologies
-                    </p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-purple-500/50 transition-all duration-300">
-                  <CardContent className="p-6 flex flex-col items-center text-center">
-                    <div className="w-12 h-12 rounded-full bg-purple-500/20 flex items-center justify-center mb-4">
-                      <Network className="text-purple-400" size={24} />
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Networking</h3>
-                    <p className="text-gray-400 text-sm">Understanding network protocols and security</p>
-                  </CardContent>
-                </Card>
-
-                <Card className="bg-gray-800/50 border-gray-700 hover:border-cyan-500/50 transition-all duration-300">
-                  <CardContent className="p-6 flex flex-col items-center text-center">
-                    <div className="w-12 h-12 rounded-full bg-cyan-500/20 flex items-center justify-center mb-4">
-                      <Terminal className="text-cyan-400" size={24} />
-                    </div>
-                    <h3 className="text-lg font-semibold text-white mb-2">Linux Systems</h3>
-                    <p className="text-gray-400 text-sm">Proficient across multiple Linux platforms</p>
-                  </CardContent>
-                </Card>
-              </div>
-            </motion.div>
+          <div className="flex justify-center">
+            <a href="./new_resume.pdf" download className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white py-2 px-4 rounded-md flex items-center gap-2">
+              <Download size={16} /> Download Resume
+            </a>
           </div>
         </div>
       </section>
+    </div>
 
       {/* Education & Skills Section */}
       <section className="py-20">
