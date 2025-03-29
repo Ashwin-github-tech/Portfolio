@@ -170,6 +170,9 @@ export default function Home() {
               </div>
 
               <div className="mt-6">
+                <a href="./new_resume.pdf" download className=className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 flex items-center justify-center gap-2">
+                  <Download size={16} /> Download Resume
+                </a>
                 <Button className="w-full bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 flex items-center justify-center gap-2">
                   <Download size={16} /> Download Resume
                 </Button>
