@@ -98,7 +98,7 @@ export default function Home() {
             <p className="text-gray-400 max-w-2xl mx-auto">Get to know more about my background, skills, and interests</p>
           </motion.div>
           <div className="flex justify-center">
-            <a href="./new_resume.pdf" download className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white py-2 px-4 rounded-md flex items-center gap-2">
+            <a href="resume.pdf" download className="bg-gradient-to-r from-purple-600 to-cyan-600 hover:from-purple-700 hover:to-cyan-700 text-white py-2 px-4 rounded-md flex items-center gap-2">
               <Download size={16} /> Download Resume
             </a>
           </div>
