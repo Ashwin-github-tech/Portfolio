@@ -31,7 +31,7 @@ export default function Home() {
 
   if (!mounted) return null
 
-    return (
+  return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-900 to-gray-800">
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 z-0">
@@ -104,7 +104,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-    </div>
 
       <section className="py-20">
         <div className="container mx-auto px-4">
@@ -449,6 +448,11 @@ export default function Home() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
+
+      {/* Achievements & Certificates Section */}
+      <section className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid md:grid-cols-2 gap-12">
             {/* Achievements */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -680,6 +684,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  );
+  )
 }
 
