@@ -106,7 +106,6 @@ export default function Home() {
       </section>
     </div>
 
-      {/* Education & Skills Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12">
@@ -115,8 +114,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
+              transition={{ duration: 0.5 }} >
               <Badge className="mb-2 bg-purple-600/20 text-purple-400 hover:bg-purple-600/30 border-none px-3 py-1">
                 Education
               </Badge>
@@ -682,6 +680,6 @@ export default function Home() {
         </div>
       </footer>
     </div>
-  )
+  );
 }
 
